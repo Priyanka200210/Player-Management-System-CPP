@@ -1,13 +1,15 @@
 #include "linked_List.h"
 
-DoublyLinkedList::DoublyLinkedList(){
+template<class T>
+DoublyLinkedList<T>::DoublyLinkedList(){
      this->start = NULL;
 }
 
 /***************************************************************************/
 /////////////////////  START ADD DATA ///////////////////////////
-void DoublyLinkedList::addData(Player& data,int position){
-	Node* temp = new Node(data);
+template<class T>
+void DoublyLinkedList<T>::addData(T data,int position){
+	Node<T>* temp = new Node<T>(data);
 	if(start == NULL){
 		start = temp;
 		return;
@@ -20,7 +22,7 @@ void DoublyLinkedList::addData(Player& data,int position){
 		return;
 	}
 	
-	 Node* p = start;
+	 Node<T>* p = start;
      int i=1;
      while( i<position-1 && p->getNext()!=NULL ){
           i++;
@@ -43,13 +45,14 @@ void DoublyLinkedList::addData(Player& data,int position){
 /***************************************************************************/
 
 ///////////////////// START DISPLAY ///////////////////////////////////////
-void DoublyLinkedList::display(){
+template<class T>
+void DoublyLinkedList<T>::display(){
 	if(start == NULL){
 		cout<<"\nLinked List is empty!!"<<endl;
 		return;
 	}
 	
-     Node* p = start;
+     Node<T>* p = start;
      p->getData().displayHeaders();
      while(p!=NULL)
      {
@@ -64,8 +67,9 @@ void DoublyLinkedList::display(){
 /***************************************************************************/
 
 ///////////////////////////// START SEARCH /////////////////////////////
-void DoublyLinkedList::search(){
-	Node* q = start;
+template<class T>
+void DoublyLinkedList<T>::search(){
+	Node<T>* q = start;
 	if(start == NULL){
 		cout<<"\nLinked List is Empty!!";
 		return;
@@ -79,7 +83,7 @@ void DoublyLinkedList::search(){
     	cout<<"Enter Jersy No: ";
     	cin>>jNo;
     	
-     Node* p = searchByJersyNo(jNo);
+     Node<T>* p = searchByJersyNo(jNo);
      
      if(p->getData().getJNo() == jNo){
     	 	p->getData().displayHeaders();
@@ -87,7 +91,7 @@ void DoublyLinkedList::search(){
     	 	return;
 	 }	 
 	 
-	   if(p->getNext() == NULL){
+	 if(p->getNext() == NULL){
         cout<<"\nData not found!!";
    	    return;
 	  }	
@@ -105,7 +109,7 @@ void DoublyLinkedList::search(){
 		fflush(stdin);
 		gets(name);
 		
-		Node* p = searchByName(name);
+		Node<T>* p = searchByName(name);
 		
 		
 		 
@@ -132,7 +136,7 @@ void DoublyLinkedList::search(){
     	cout<<"Enter No of Runs made: ";
     	cin>>runs;
     	
-    	 Node* p = searchByRuns(runs);
+    	 Node<T>* p = searchByRuns(runs);
     	
 		 
     	 if(p->getData().getRuns() == runs){
@@ -158,7 +162,7 @@ void DoublyLinkedList::search(){
     	cout<<"Enter No of wickets taken: ";
     	cin>>wickets;
     	
-    	 Node* p = searchByWickets(wickets);
+    	 Node<T>* p = searchByWickets(wickets);
     	
 		 
     	 if(p->getData().getWickets() == wickets){
@@ -182,7 +186,7 @@ void DoublyLinkedList::search(){
     	cout<<"Enter No of Matches Played: ";
     	cin>>MatchesPlayed;
     	
-    	 Node* p = searchByMatchesPlayed(MatchesPlayed);
+    	 Node<T>* p = searchByMatchesPlayed(MatchesPlayed);
     	 
 		 
     	 if(p->getData().getMatchPlayed() == MatchesPlayed){
@@ -209,8 +213,9 @@ void DoublyLinkedList::search(){
 }
 
 ////////////////////////// START SEARCH BY JERSY NO ///////////////////////
-Node* DoublyLinkedList::searchByJersyNo(int jNo){
-	Node* p = start;	
+template<class T>
+Node<T>* DoublyLinkedList<T>::searchByJersyNo(int jNo){
+	Node<T>* p = start;	
 	if(p->getData().getJNo() == jNo){
 		return p;
 	}
@@ -224,12 +229,13 @@ Node* DoublyLinkedList::searchByJersyNo(int jNo){
 //////////////////// END SEARCH BY JERSY NO ///////////////////////////////
 
 ///////////////////// START SEARCH BY NAME //////////////////////////////////////////
-Node* DoublyLinkedList::searchByName(const char* data){
+template<class T>
+Node<T>* DoublyLinkedList<T>::searchByName(const char* data){
 		if(start == NULL){
 			return NULL;
 		}
 		   
-		Node* p = start;
+		Node<T>* p = start;
 		if(strcasecmp(p->getData().getName(),data)==0){
 			return p;
 		}
@@ -242,12 +248,13 @@ Node* DoublyLinkedList::searchByName(const char* data){
 ///////////////////////// END SEARCH BY NAME ///////////////////////////////////////////////
 
 ////////////////////////// START SEARCH BY RUNS ////////////////////////////////////////////
-Node* DoublyLinkedList::searchByRuns(int runs){
+template<class T>
+Node<T>* DoublyLinkedList<T>::searchByRuns(int runs){
 		if(start == NULL){
 			return NULL;
 		}
 		   
-		Node* p = start;
+		Node<T>* p = start;
 		if(p->getData().getRuns()== runs){
 		 return p;
 		}
@@ -262,12 +269,13 @@ Node* DoublyLinkedList::searchByRuns(int runs){
 //////////////////////////// END SEARCH BY RUNS ///////////////////////////////////////////
 
 //////////////////////////// START SEARCH BY WICKETS //////////////////////////////////////
-Node* DoublyLinkedList::searchByWickets(int wickets){
+template<class T>
+Node<T>* DoublyLinkedList<T>::searchByWickets(int wickets){
 			if(start == NULL){
 			return NULL;
 		}
 		   
-		Node* p = start;
+		Node<T>* p = start;
 		if(p->getData().getWickets()== wickets){
 		 return p;
 		}
@@ -282,12 +290,13 @@ Node* DoublyLinkedList::searchByWickets(int wickets){
 ///////////////////////////// END SEARCH BY WICKETS//////////////////////////////////////////////////////
 
 /////////////////////////////// START SEARCH BY MATCHES PLAYED /////////////////////////////////////////
-Node* DoublyLinkedList::searchByMatchesPlayed(int matchesPlayed){
+template<class T>
+Node<T>* DoublyLinkedList<T>::searchByMatchesPlayed(int matchesPlayed){
 			if(start == NULL){
 			return NULL;
 		}
 		   
-		Node* p = start;
+		Node<T>* p = start;
 		if(p->getData().getMatchPlayed()== matchesPlayed){
 		 return p;
 		}
@@ -306,7 +315,8 @@ Node* DoublyLinkedList::searchByMatchesPlayed(int matchesPlayed){
 
 
 ////////////////////////  START SORT ///////////////////////////////////////////////////////////////
-void DoublyLinkedList::sorting(){
+template<class T>
+void DoublyLinkedList<T>::sorting(){
 	if(start == NULL){
 		cout<<"\nLinked List is empty!!";
 		return;
@@ -366,15 +376,16 @@ void DoublyLinkedList::sorting(){
 //////////////////////// ASCENDING SORT ///////////////////////////////////
 
 /*********************   JERSY NO  **************************************/
-void DoublyLinkedList::sortByJersyNo(){
+template<class T>
+void DoublyLinkedList<T>::sortByJersyNo(){
 	int flag = 0;
-	Node* p = start;
+	Node<T>* p = start;
 	while(flag==0){
 		p->getData().displayHeaders();
 		flag=1;
 	}
 	for(;p!=NULL;p=p->getNext()){
-		for(Node* q = p->getNext();q!=NULL;q = q->getNext()){
+		for(Node<T>* q = p->getNext();q!=NULL;q = q->getNext()){
 			if(p->getData().getJNo() > q->getData().getJNo()){
 				Player temp = p->getData();
 				p->setData(q->getData());
@@ -388,15 +399,16 @@ void DoublyLinkedList::sortByJersyNo(){
 }
 
 /*********************  WICKETS  **************************************/
-void DoublyLinkedList::sortByWickets(){
+template<class T>
+void DoublyLinkedList<T>::sortByWickets(){
 	int flag = 0;
-	Node* p = start;
+	Node<T>* p = start;
 	while(flag==0){
 		p->getData().displayHeaders();
 		flag=1;
 	}
 	for(;p!=NULL;p=p->getNext()){
-		for(Node* q = p->getNext();q!=NULL;q = q->getNext()){
+		for(Node<T>* q = p->getNext();q!=NULL;q = q->getNext()){
 			if(p->getData().getWickets() > q->getData().getWickets()){
 				Player temp = p->getData();
 				p->setData(q->getData());
@@ -409,15 +421,16 @@ void DoublyLinkedList::sortByWickets(){
 }
 
 /*********************   RUNS  **************************************/
-void DoublyLinkedList::sortByRuns(){
+template<class T>
+void DoublyLinkedList<T>::sortByRuns(){
 	int flag = 0;
-	Node* p = start;
+	Node<T>* p = start;
 	while(flag==0){
 		p->getData().displayHeaders();
 		flag=1;
 	}
 	for(;p!=NULL;p=p->getNext()){
-		for(Node* q = p->getNext();q!=NULL;q = q->getNext()){
+		for(Node<T>* q = p->getNext();q!=NULL;q = q->getNext()){
 			if(p->getData().getRuns() > q->getData().getRuns()){
 				Player temp = p->getData();
 				p->setData(q->getData());
@@ -430,15 +443,16 @@ void DoublyLinkedList::sortByRuns(){
 }
 
 /*********************   MATCHES PLAYED  **************************************/
-void DoublyLinkedList::sortByMatchesPlayed(){
+template<class T>
+void DoublyLinkedList<T>::sortByMatchesPlayed(){
 	int flag = 0;
-	Node* p = start;
+	Node<T>* p = start;
 	while(flag==0){
 		p->getData().displayHeaders();
 		flag=1;
 	}
 	for(;p!=NULL;p=p->getNext()){
-		for(Node* q = p->getNext();q!=NULL;q = q->getNext()){
+		for(Node<T>* q = p->getNext();q!=NULL;q = q->getNext()){
 			if(p->getData().getMatchPlayed() > q->getData().getMatchPlayed()){
 				Player temp = p->getData();
 				p->setData(q->getData());
@@ -456,15 +470,16 @@ void DoublyLinkedList::sortByMatchesPlayed(){
 
 
 /*********************   JERSY NO  **************************************/
-void DoublyLinkedList::descSortByJersyNo(){
+template<class T>
+void DoublyLinkedList<T>::descSortByJersyNo(){
 	int flag = 0;
-	Node* p = start;
+	Node<T>* p = start;
 	while(flag==0){
 		p->getData().displayHeaders();
 		flag=1;
 	}
 	for(;p!=NULL;p=p->getNext()){
-		for(Node* q = p->getNext();q!=NULL;q = q->getNext()){
+		for(Node<T>* q = p->getNext();q!=NULL;q = q->getNext()){
 			if(p->getData().getJNo() < q->getData().getJNo()){
 				Player temp = p->getData();
 				p->setData(q->getData());
@@ -476,15 +491,16 @@ void DoublyLinkedList::descSortByJersyNo(){
 }
 
 /*********************   WICKETS  **************************************/
-void DoublyLinkedList::descSortByWickets(){
+template<class T>
+void DoublyLinkedList<T>::descSortByWickets(){
 	int flag = 0;
-	Node* p = start;
+	Node<T>* p = start;
 	while(flag==0){
 		p->getData().displayHeaders();
 		flag=1;
 	}
 	for(;p!=NULL;p=p->getNext()){
-		for(Node* q = p->getNext();q!=NULL;q = q->getNext()){
+		for(Node<T>* q = p->getNext();q!=NULL;q = q->getNext()){
 			if(p->getData().getWickets() < q->getData().getWickets()){
 				Player temp = p->getData();
 				p->setData(q->getData());
@@ -497,15 +513,16 @@ void DoublyLinkedList::descSortByWickets(){
 }
 
 /*********************   RUNS  **************************************/
-void DoublyLinkedList::descSortByRuns(){
+template<class T>
+void DoublyLinkedList<T>::descSortByRuns(){
 	int flag = 0;
-	Node* p = start;
+	Node<T>* p = start;
 	while(flag==0){
 		p->getData().displayHeaders();
 		flag=1;
 	}
 	for(;p!=NULL;p=p->getNext()){
-		for(Node* q = p->getNext();q!=NULL;q = q->getNext()){
+		for(Node<T>* q = p->getNext();q!=NULL;q = q->getNext()){
 			if(p->getData().getRuns() < q->getData().getRuns()){
 				Player temp = p->getData();
 				p->setData(q->getData());
@@ -518,15 +535,16 @@ void DoublyLinkedList::descSortByRuns(){
 }
 
 /*********************   MATCHES PLAYED  **************************************/
-void DoublyLinkedList::descSortByMatchesPlayed(){
+template<class T>
+void DoublyLinkedList<T>::descSortByMatchesPlayed(){
 	int flag = 0;
-	Node* p = start;
+	Node<T>* p = start;
 	while(flag==0){
 		p->getData().displayHeaders();
 		flag=1;
 	}
 	for(;p!=NULL;p=p->getNext()){
-		for(Node* q = p->getNext();q!=NULL;q = q->getNext()){
+		for(Node<T>* q = p->getNext();q!=NULL;q = q->getNext()){
 			if(p->getData().getMatchPlayed() < q->getData().getMatchPlayed()){
 				Player temp = p->getData();
 				p->setData(q->getData());
@@ -542,8 +560,9 @@ void DoublyLinkedList::descSortByMatchesPlayed(){
 /***********************************************************************************************/
 
 /////////////////////////////// START UPDATE /////////////////////////////////////////////////////////
-void DoublyLinkedList::updatePlayerData(){
-	Node* p = start;
+template<class T>
+void DoublyLinkedList<T>::updatePlayerData(){
+	Node<T>* p = start;
 	if(start == NULL){
 		cout<<"\nLinked List is empty!!"<<endl;
 		return;
@@ -553,7 +572,7 @@ void DoublyLinkedList::updatePlayerData(){
 	cout<<"\nEnter jersy No: ";
 	cin>>jNo;
 	
-	Node* q = searchByJersyNo(jNo);
+	Node<T>* q = searchByJersyNo(jNo);
 	if( q->getNext() == NULL && q->getData().getJNo() != jNo){
 		cout<<"\nData not found!!"<<endl;
 		return;
@@ -583,14 +602,15 @@ void DoublyLinkedList::updatePlayerData(){
 		
 }
 
-void DoublyLinkedList::updateByRuns(Node* q,int jNo){
+template<class T>
+void DoublyLinkedList<T>::updateByRuns(Node<T>* q,int jNo){
 	    int runs;
 		cout<<"\nEnter runs to update: ";
 		cin>>runs;
 		
 		Player p1(q->getData().getJNo(),q->getData().getName(),runs,q->getData().getWickets(),q->getData().getMatchPlayed());
 		if(q->getData().getJNo() == jNo){
-			Node* r = start;
+			Node<T>* r = start;
 			r->setData(p1);
 			cout<<"\nData Updated Successfully!!";
        		return;
@@ -603,13 +623,15 @@ void DoublyLinkedList::updateByRuns(Node* q,int jNo){
 		cout<<"\nData Updated Successfully!!";	
 }
 
-void DoublyLinkedList::updateByWickets(Node* q,int jNo){
+template<class T>
+void DoublyLinkedList<T>::updateByWickets(Node<T>* q,int jNo){
 	    int wickets;
 		cout<<"\nEnter wickets to update: ";
 		cin>>wickets;
+		
 		Player p1(q->getData().getJNo(),q->getData().getName(),q->getData().getRuns(),wickets,q->getData().getMatchPlayed());
 		if(q->getData().getJNo() == jNo){
-			Node* r = start;
+			Node<T>* r = start;
 			r->setData(p1);
 			cout<<"\nData Updated Successfully!!";
        		return;
@@ -622,14 +644,15 @@ void DoublyLinkedList::updateByWickets(Node* q,int jNo){
 		cout<<"\nData Updated Successfully!!";	
 }
 
-void DoublyLinkedList::updateByMatchesPlayed(Node* q,int jNo){
+template<class T>
+void DoublyLinkedList<T>::updateByMatchesPlayed(Node<T>* q,int jNo){
 	    int mPlayed;
 		cout<<"\nEnter Matches Played to update: ";
 		cin>>mPlayed;
 		
 		Player p1(q->getData().getJNo(),q->getData().getName(),q->getData().getRuns(),q->getData().getWickets(),mPlayed);
 		if(q->getData().getJNo() == jNo){
-			Node* r = start;
+			Node<T>* r = start;
 			r->setData(p1);
 			cout<<"\nData Updated Successfully!!";
        		return;
@@ -646,7 +669,8 @@ void DoublyLinkedList::updateByMatchesPlayed(Node* q,int jNo){
 /***************************************************************************/
 
 //////////////////  START DELETE  ///////////////////////////////////////////
-void  DoublyLinkedList::deleteData(){
+template<class T>
+void  DoublyLinkedList<T>::deleteData(){
 	if(start == NULL){
 		cout<<"\nLinked List is empty!!";
 		return;
@@ -656,21 +680,21 @@ void  DoublyLinkedList::deleteData(){
 	cin>>jNo;
 	
 	if(start->getData().getJNo() == jNo){
-		Node* p = start;
+		Node<T>* p = start;
 		start = p->getNext();
 		delete p;
 		cout<<"Data Deleted Successfully!!";
 		return;
 	}
 	
-	Node* p = searchByData(jNo);
+	Node<T>* p = searchByData(jNo);
 
 	if(p->getNext()==NULL){
 		cout<<"Data not found!!";
 		return;
 	}
 	
-	Node* q = p->getNext();
+	Node<T>* q = p->getNext();
 	p->setNext(q->getNext());
 	delete q;
 	cout<<"Data Deleted Successfully!!";
@@ -680,8 +704,9 @@ void  DoublyLinkedList::deleteData(){
 //////////////////  END DELETE  ///////////////////////////////////////////
 
 ///////////////// START SEARCH BY DATA /////////////////////////////////////////
-Node* DoublyLinkedList::searchByData(int data){
-	Node* p = start;
+template<class T>
+Node<T>* DoublyLinkedList<T>::searchByData(int data){
+	Node<T>* p = start;
 		while(p->getNext()!=NULL && p->getNext()->getData().getJNo()!=data){
 		p = p->getNext();
 	}
@@ -692,9 +717,10 @@ Node* DoublyLinkedList::searchByData(int data){
 /***************************************************************************/
 
 /////////////////// START DESTRUCTOR ///////////////////////////////
-DoublyLinkedList::~DoublyLinkedList(){
+template<class T>
+DoublyLinkedList<T>::~DoublyLinkedList(){
 	if(start!=NULL){
-		Node* p = start->getNext();
+		Node<T>* p = start->getNext();
 		while(p!=NULL){
 			delete start;
 			start = p;
@@ -704,4 +730,4 @@ DoublyLinkedList::~DoublyLinkedList(){
 	}
 
 }
-/////////////////////// END DESTRUCTOR //////////////////////////////////////
+///////////////	//////// END DESTRUCTOR //////////////////////////////////////

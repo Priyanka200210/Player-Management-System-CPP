@@ -1,31 +1,37 @@
 #include "node.h"
-
-Node::Node(Player& d){
+template<class T>	
+Node<T>::Node(T d){
      this->data = d;
      this->prev = NULL;
      this->next = NULL;
 }
 
-void Node::setData(Player d){
+template<class T>
+void Node<T>::setData(T d){
      this->data = d;
 }
 
-void Node::setNext(Node* n){
+template<class T>
+void Node<T>::setNext(Node<T>* n){
      this->next = n;
 }
 
-void Node::setPrev(Node* p){
+template<class T>
+void Node<T>::setPrev(Node<T>* p){
 	this->prev = p;
 }
 
-Player Node::getData(){
+template<class T>
+T Node<T>::getData(){
      return data;
 }
 
-Node* Node::getNext(){
+template<class T>
+Node<T>* Node<T>::getNext(){
      return next;
 }
 
-Node* Node::getPrev(){
+template<class T>
+Node<T>* Node<T>::getPrev(){
 	return prev;
 }

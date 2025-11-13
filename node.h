@@ -1,17 +1,18 @@
 #include "player.h"
 #include<iostream>
 using namespace std;
-
+template<class T>	
 class Node{
-     Player data;
-     Node *prev,*next;
+     T data;
+     Node<T>*prev;
+	 Node<T>*next;
 
      public:
-     Node(Player&);
-     void setData(Player);
-     Player getData();
-     void setPrev(Node*);
-     Node* getPrev();
-     void setNext(Node*);
-     Node* getNext();
+     Node(T);
+     void setData(T);	
+     T	getData();
+     void setPrev(Node<T>*);
+     Node<T>* getPrev();
+     void setNext(Node<T>*);
+     Node<T>* getNext();
 };

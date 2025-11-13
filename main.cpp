@@ -1,11 +1,11 @@
-#include "linked_List.h"
+#include "linked_List.cpp"
 #include<iostream>
 #include<string.h>
 using namespace std;
 
-int main(){
+int main(){	
 	int choice,position;
-	DoublyLinkedList l;
+	DoublyLinkedList<Player> l;	
 	char name[20];
     int jersyNo;
     int runs;
@@ -62,6 +62,10 @@ int main(){
 			 }
 			 case 0:{
 			 	cout<<"\nThank You!!";
+				break;
+			 }
+			 default:{
+			 	cout<<"\nInvalid Choice!!"<<endl;
 				break;
 			 }
 		 }	

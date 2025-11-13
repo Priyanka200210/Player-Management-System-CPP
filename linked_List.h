@@ -1,22 +1,23 @@
-#include "node.h"
-#include<iostream>
+#include "node.cpp"
+#include<iostream>			
 using namespace std;
 
+template<class T>	
 class DoublyLinkedList{
-     Node* start;
+     Node<T>* start;
 
      public:
      DoublyLinkedList();
-     void addData(Player&,int);
+     void addData(T,int);
      void deleteData();
      void display();
      void search();
-     Node* searchByData(int);
-     Node* searchByJersyNo(int);
-     Node* searchByName(const char*);
-     Node* searchByRuns(int);
-     Node* searchByWickets(int);
-     Node* searchByMatchesPlayed(int);
+     Node<T>* searchByData(int);
+     Node<T>* searchByJersyNo(int);
+     Node<T>* searchByName(const char*);
+     Node<T>* searchByRuns(int);
+     Node<T>* searchByWickets(int);
+     Node<T>* searchByMatchesPlayed(int);
      void sorting();
      void sortByJersyNo();
      void sortByWickets();
@@ -27,9 +28,9 @@ class DoublyLinkedList{
 	 void descSortByRuns();
 	 void descSortByMatchesPlayed();
      void updatePlayerData();
-     void updateByRuns(Node*,int);
-     void updateByWickets(Node*,int);
-     void updateByMatchesPlayed(Node*,int);
+     void updateByRuns(Node<T>*,int);
+     void updateByWickets(Node<T>*,int);
+     void updateByMatchesPlayed(Node<T>*,int);
 	~DoublyLinkedList();
 
 };
