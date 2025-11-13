@@ -10,11 +10,11 @@ It also includes **file handling** for saving and loading player data, ensuring 
 ✅ Modular and well-structured code (Header and Source separation)
 
 ## Technologies Used: <br>
-   **Language**: C++  
-   **Data Structure:** Doubly Linked List(Dynamic Memory Allocation)
-   **Programming Paradigm:** Object-Oriented Programming (Classes & Encapsulation)
+   **Language:** C++    
+   **Data Structure:** Doubly Linked List(Dynamic Memory Allocation)  
+   **Programming Paradigm:** Object-Oriented Programming (Classes & Encapsulation)  
 
-👩‍💻 ## Author:   
+## Author:   
 Priyanka Kadam
   
   
