@@ -31,6 +31,8 @@ class DoublyLinkedList{
      void updateByRuns(Node<T>*,int);
      void updateByWickets(Node<T>*,int);
      void updateByMatchesPlayed(Node<T>*,int);
+     void readFile(char* fn);
+     void writeFile(char* fn);
 	~DoublyLinkedList();
 
 };

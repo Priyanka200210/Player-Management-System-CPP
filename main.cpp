@@ -6,6 +6,7 @@ using namespace std;
 int main(){	
 	int choice,position;
 	DoublyLinkedList<Player> l;	
+	l.readFile("object.bin");
 	char name[20];
     int jersyNo;
     int runs;
@@ -61,6 +62,7 @@ int main(){
 				break;
 			 }
 			 case 0:{
+			 	 l.writeFile("object.bin");
 			 	cout<<"\nThank You!!";
 				break;
 			 }

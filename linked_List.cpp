@@ -1,4 +1,5 @@
 #include "linked_List.h"
+#include<fstream>
 
 template<class T>
 DoublyLinkedList<T>::DoublyLinkedList(){
@@ -715,6 +716,30 @@ Node<T>* DoublyLinkedList<T>::searchByData(int data){
 ///////////////// END SEARCH BY DATA///////////////////////////
 
 /***************************************************************************/
+
+template<class T>
+void DoublyLinkedList<T>::readFile(char* fn){
+	ifstream in(fn,ios_base::binary);
+	T data;
+	int i=1;
+	while(in.read((char*)&data,sizeof(data))){
+			this->addData(data,i++);	
+	}
+	in.close();
+}
+
+template<class T>
+void DoublyLinkedList<T>::writeFile(char* fn){
+	ofstream out(fn,ios_base::binary);
+	T data;
+	Node<T>* p = start;
+	while(p!=NULL){
+		data = p->getData();
+		out.write((char*)&data,sizeof(data));
+		p = p->getNext();
+	}
+	out.close();
+}
 
 /////////////////// START DESTRUCTOR ///////////////////////////////
 template<class T>
